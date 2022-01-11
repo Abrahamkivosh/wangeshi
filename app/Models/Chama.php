@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Chama extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 }
