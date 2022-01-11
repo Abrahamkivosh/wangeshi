@@ -15,6 +15,11 @@ class CreateChamasTable extends Migration
     {
         Schema::create('chamas', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('amount')->nullable();
+            $table->string('duration')->nullable();
+            $table->string('location')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
