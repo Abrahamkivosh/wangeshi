@@ -77,4 +77,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Issue::class);
     }
+    /**
+     * The chamas that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function chamas()
+    {
+        return $this->belongsToMany(Chama::class, 'chma_user');
+    }
 }

@@ -10,8 +10,32 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-label for="first_name" value="{{ __('First Name') }}" />
+                <x-jet-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+            </div>
+
+            <div>
+                <x-jet-label for="last_name" value="{{ __('Last Name') }}" />
+                <x-jet-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            </div>
+
+            <div>
+                <x-jet-label for="middle_name" value="{{ __('Name') }}" />
+                <x-jet-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autofocus autocomplete="middle_name" />
+            </div>
+
+            <div>
+                <x-jet-label for="id_number" value="{{ __('ID Number') }}" />
+                <x-jet-input id="id_number" class="block mt-1 w-full" type="number" name="id_number" :value="old('id_number')" required autofocus autocomplete="id_number" />
+            </div>
+
+            <div>
+                <x-jet-label for="dob" value="{{ __('Date Of Birth') }}" />
+                <x-jet-input id="dob" class="block mt-1 w-full" type="date" name="dob" :value="old('dob')" required autofocus autocomplete="dob" />
+            </div>
+            <div>
+                <x-jet-label for="phone" value="{{ __('phone') }}" />
+                <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus autocomplete="phone" />
             </div>
 
             <div class="mt-4">

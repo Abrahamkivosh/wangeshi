@@ -15,7 +15,8 @@ class ChamaController extends Controller
      */
     public function index()
     {
-        //
+        $chamas = Chama::all();
+        return view('pages.chamas.index',compact('chamas')) ;
     }
 
     /**
