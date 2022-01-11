@@ -7,8 +7,9 @@
                 <div><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"></div>
                 <div class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown"
-                        role="button" aria-haspopup="true" aria-expanded="false">Steave
-                        Gection <span class="caret"></span></a>
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                        {{auth()->user()->first_name . " ". auth()->user()->last_name}}
+                         <span class="caret"></span></a>
                     <div class="dropdown-menu animated flipInY">
                         <!-- text-->
                         <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My
@@ -43,23 +44,22 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-layout-grid2"></i><span class="hide-menu">Chama</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-calendar.html">Chama</a></li>
+                        <li><a href="{{route('chamas.index')}}">Chama</a></li>
 
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"> <i
                             class="ti-bar-chart"></i> <span class="hide-menu">Payments</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="app-email.html">View Payment</a></li>
+                        <li><a href="{{route('payments.index')}}">View Payment</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-palette"></i><span class="hide-menu">Meeting <span
-                                class="badge badge-pill badge-primary text-white ml-auto">25</span></span></a>
+                            class="ti-palette"></i><span class="hide-menu">Meeting </a>
                     <ul aria-expanded="false" class="collapse">
 
-                        <li><a href="ui-date-paginator.html">View Mettings</a></li>
-                        <li><a href="ui-dragable-portlet.html">Create Meeting</a></li>
+                        <li><a href="{{route('meetings.index')}}">View Mettings</a></li>
+                        <li><a href="#">Create Meeting</a></li>
                     </ul>
                 </li>
                 <li class="nav-small-cap">--- Proffessional</li>

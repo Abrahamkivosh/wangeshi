@@ -16,6 +16,6 @@ class Chama extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class, 'chama_user');
+        return $this->belongsToMany(User::class, 'chama_user')->withPivot(['approved','received','receive_date'])->withTimestamps();
     }
 }

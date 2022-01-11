@@ -32,14 +32,28 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-        return User::create([
-            'first_name' => $input['first_name'],
-            'last_name' => $input['last_name'],
-            'middle_name' => $input['middle_name'],
-            'dob' => $input['dob'],
-            'phone' => $input['phone'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+        // dd($input['first_name']);
+        $user = new User();
+        $user->first_name = $input['first_name'] ;
+        $user->last_name = $input['last_name'] ;
+        $user->middle_name = $input['middle_name'] ;
+        $user->id_number = $input['id_number'] ;
+        $user->dob = $input['dob'] ;
+        $user->phone = $input['phone'] ;
+        $user->email = $input['email'] ;
+        $user->password = Hash::make($input['password']);
+        $user->save();
+        return $user ;
+
+
+        // return User::create([
+        //     'first_name' => $input['first_name'],
+        //     'last_name' => $input['last_name'],
+        //     'middle_name' => $input['middle_name'],
+        //     'dob' => $input['dob'],
+        //     'phone' => $input['phone'],
+        //     'email' => $input['email'],
+        //     'password' => Hash::make($input['password'])Hash::make($input['password']),
+        // ]);
     }
 }

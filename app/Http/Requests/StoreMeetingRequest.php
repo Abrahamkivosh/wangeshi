@@ -13,7 +13,7 @@ class StoreMeetingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->role == 1;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreMeetingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>"required|string",
+            'theme'=>"required|string",
+            'location'=>"required|string",
+            'date' => "required|date"
+
+
         ];
     }
 }
