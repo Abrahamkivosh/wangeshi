@@ -66,7 +66,10 @@
                     <ul aria-expanded="false" class="collapse">
 
                         <li><a href="{{ route('meetings.index') }}">View Mettings</a></li>
-                        <li><a href="#">Create Meeting</a></li>
+                        @if (auth()->user()->role == 1)
+                        <li><a href="{{route('meetings.create')}}">Create Meeting</a></li> 
+                        @endif
+                        
                     </ul>
                 </li>
                 <li class="nav-small-cap">--- Proffessional</li>

@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
             Event::factory(10)->create();
             User::create([
 
-                'first_name' => "Admin",
-                    'last_name' => "Peter",
-                    'middle_name' => "kamau",
+                'first_name' => "Mwangangi",
+                    'last_name' => "Nzamalu",
+                    'middle_name' => "Samuel",
                     'dob' => now(),
-                    'phone' => "0725632145",
-                    'email' => "admin@test.com",
+                    'phone' => "0722436233",
+                    'email' => "admin@gmail.com",
                     'role'=> 1,
                     'password' => Hash::make("password"),
 
