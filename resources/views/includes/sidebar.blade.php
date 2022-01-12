@@ -45,7 +45,7 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="nav-small-cap">--- PERSONAL</li>
-                <li> <a class="waves-effect waves-dark" href="index.html"><i class="icon-speedometer"></i><span
+                <li> <a class="waves-effect waves-dark" href="{{route('dashboard')}}"><i class="icon-speedometer"></i><span
                             class="hide-menu">Dashboard</span></a>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i

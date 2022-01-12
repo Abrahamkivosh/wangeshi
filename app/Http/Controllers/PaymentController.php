@@ -52,15 +52,18 @@ class PaymentController extends Controller
     {
         $data = $request->validated() ;
         $user = User::find(auth()->user()->id) ;
+        $amount = $data['amount'];
 
         // return $data ;
 
         if ( $data['type'] == 1 ) {
             # code...
-           return $this->withdrawWallet($request,$mpesaGateway);
+        //    return $this->withdrawWallet($request,$mpesaGateway);
+        $user->withdraw($amount);
             
         }else {
-           return $this->loadWallet($data,$mpesaGateway,$user);
+            $user->deposit($amount);
+        //    return $this->loadWallet($data,$mpesaGateway,$user);
         }
        
     }
