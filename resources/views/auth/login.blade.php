@@ -39,6 +39,8 @@
                     </a>
                 @endif
 
+                <a class="text text-blue-500 px-4 border mx-2 "  href="{{route('register')}}">Create Account</a>
+
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>

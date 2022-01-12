@@ -40,11 +40,15 @@
                                 @csrf
                                 <button type="submit" class="btn btn-info">Join Chama</button>
                             </form>
-
+                            
+                            @if (auth()->user()->role == 1)
                             <form action="{{route('disbursementChamaAmount',$chama)}}" class=" float-right pr-2  " method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Disbursement Money</button>
                             </form>
+                            @endif
+
+                     
                         
                         </h6>
                         <div class="row m-t-40">

@@ -18,7 +18,7 @@ class ChamaPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true ;
     }
 
     /**
@@ -30,7 +30,7 @@ class ChamaPolicy
      */
     public function view(User $user, Chama $chama)
     {
-        //
+        return true ;
     }
 
     /**
@@ -41,7 +41,7 @@ class ChamaPolicy
      */
     public function create(User $user)
     {
-        //
+        return true ;
     }
 
     /**
@@ -65,7 +65,7 @@ class ChamaPolicy
      */
     public function delete(User $user, Chama $chama)
     {
-        //
+        return $user->role == 1 ;
     }
 
     /**
