@@ -53,7 +53,7 @@ class EventController extends Controller
         $post = new Event();
 
         $post->title=$request->title;
-        $Post->description=$request->description;
+        $post->description=$request->description;
 
         $validate=$post->save();
 
@@ -108,7 +108,7 @@ class EventController extends Controller
         $post = Event::find($id);
 
         $post->title=$request->title;
-        $Post->description=$request->description;
+        $post->description=$request->description;
 
         $validate=$post->save();
 
