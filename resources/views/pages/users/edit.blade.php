@@ -68,10 +68,17 @@
                                 <label for="role">Member Type</label>
                                 <select id="role" class="form-control" name="role">
                                     @if ($user->role == 1)
+                                    @if (auth()->user()->role == 1)
+                                    <option value="1" >Admin</option>
+                                    @endif
+                                    
                                         <option value="1" selected>Admin</option>
                                         <option value="0">Member</option>
                                     @else
+                                    @if (auth()->user()->role == 1)
                                     <option value="1" >Admin</option>
+                                    @endif
+                                    
                                     <option value="0" selected>Member</option>
                                     @endif
                                     

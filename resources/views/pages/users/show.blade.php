@@ -51,7 +51,9 @@
                             <li class="list-group-item ">Balance {{$user->balance}} </li>
                         </ul>
                         <div>
+                            @if (auth()->user()->role == 1 && $user->id == auth()->user()->id  )
                             <a class="btn btn-info" href="{{route('users.edit',$user)}}">Edit User </a>
+                            @endif
                         </div>
                      
                     </div>
