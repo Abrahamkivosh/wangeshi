@@ -13,7 +13,7 @@ class StorePaymentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StorePaymentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'amount'=>"required|numeric",
+            'phone'=>"required",
+            'type'=>"required"
         ];
     }
 }

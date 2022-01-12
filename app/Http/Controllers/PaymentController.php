@@ -48,18 +48,28 @@ class PaymentController extends Controller
      * @param  \App\Http\Requests\StorePaymentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePaymentRequest $request)
+    public function store(StorePaymentRequest $request,MpesaGateway $mpesaGateway)
     {
         $data = $request->validated() ;
         $user = User::find(auth()->user()->id) ;
+
+        // return $data ;
+
+        if ( $data['type'] == 1 ) {
+            # code...
+           return $this->withdrawWallet($request,$mpesaGateway);
+            
+        }else {
+           return $this->loadWallet($data,$mpesaGateway,$user);
+        }
        
     }
 
-    public function loadWallet( $request, MpesaGateway $mpesaGateway, User $user)
+    public function loadWallet( $data, MpesaGateway $mpesaGateway, User $user)
     {
-        $user = auth()->user();
-        $amount = $request->amount;
-        $phone = $request->phone;
+        
+        $amount = $data['amount'];
+        $phone = $data['phone'];
 
 
         try {
@@ -74,13 +84,23 @@ class PaymentController extends Controller
                 'customerMessage' => $response['CustomerMessage'],
                 'phoneNumber' => $phone,
                 'amount' => $amount,
-                'type'=> $request['type']
+                'type'=> $data['type']
             ]);
             $user->deposit($amount);
-            return back()->with('message', $response['CustomerMessage']);
+            return back()->with('message', "deposit successfully");
         } catch (\Throwable $th) {
             return   back()->with('error', $th->getMessage());
         }
+    }
+
+    public function withdrawWallet( $data,  $mpesaGateway)
+    {
+        $user = auth()->user() ;
+        $amount = $data['amount'];
+        $phone = $data['phone'];
+        $mpesa = $mpesaGateway->B2C($phone, $amount);
+        $user->withdraw($amount);
+        return redirect()->back()->with('message', 'Withdraw Successful');
     }
 
 
