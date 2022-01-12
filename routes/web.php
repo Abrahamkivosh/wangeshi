@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChamaController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\IssueController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\userController;
@@ -29,6 +30,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resource('chamas', ChamaController::class);
+    Route::resource('issues', IssueController::class);
     Route::resource('meetings', MeetingController::class);
     Route::resource('payments', PaymentController::class);
     Route::resource('users', userController::class);

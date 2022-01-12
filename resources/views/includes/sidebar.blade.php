@@ -8,27 +8,32 @@
                 <div class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">
-                        {{-- {{auth()->user()->first_name . " ". auth()->user()->last_name}} --}}
+                        {{auth()->user()->first_name . " ". auth()->user()->last_name}}
                          <span class="caret"></span></a>
                     <div class="dropdown-menu animated flipInY">
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My
+                        <a href="{{route('users.show',auth()->user())}}" class="dropdown-item"><i class="ti-user"></i> My
                             Profile</a>
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-wallet"></i> My
+                        <a href="{{route('payments.index')}}" class="dropdown-item"><i class="ti-wallet"></i> My
                             Balance</a>
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-email"></i>
+                        <a href="{{route('issues.index')}}" class="dropdown-item"><i class="ti-email"></i>
                             Inbox</a>
                         <!-- text-->
                         <div class="dropdown-divider"></div>
                         <!-- text-->
-                        <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i>
+                        <a href="{{route('users.show',auth()->user())}}" class="dropdown-item"><i class="ti-settings"></i>
                             Account Setting</a>
                         <!-- text-->
                         <div class="dropdown-divider"></div>
                         <!-- text-->
-                        <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                       
+                        <form action="{{route('logout')}}" method="post" class="dropdown-item">
+                            @csrf
+                            <button><i class="fa fa-power-off"></i>Logout</button>
+                        </form>
+
                         <!-- text-->
                     </div>
                 </div>
@@ -73,7 +78,7 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-email"></i><span class="hide-menu">Issues</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="crm-customer-report.html">Report Issue!</a></li>
+                        <li> <a href="{{route('issues.index')}}">Report Issue!</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
@@ -83,14 +88,7 @@
                         <li> <a href="{{route('users.create')}}">Add User</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                            class="ti-bag"></i><span class="hide-menu">Vendors</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li> <a href="crm-vendors.html">All Vendors</a></li>
-                        <li> <a href="crm-add-vendors.html">Add Vendors</a></li>
-                        <li> <a href="crm-edit-vendors.html">Edit Vendors</a></li>
-                    </ul>
-                </li>
+             
 
             </ul>
         </nav>

@@ -15,7 +15,8 @@ class IssueController extends Controller
      */
     public function index()
     {
-        //
+        $issues = Issue::latest()->get();
+        return view("pages.issues.index",compact('issues')) ;
     }
 
     /**
@@ -25,7 +26,7 @@ class IssueController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.issues.create') ;
     }
 
     /**
@@ -36,7 +37,9 @@ class IssueController extends Controller
      */
     public function store(StoreIssueRequest $request)
     {
-        //
+        
+        auth()->user()->issues()->create($request->validated()) ;
+        return redirect()->route("issues.index")->with("success","Issues created") ;
     }
 
     /**
@@ -47,7 +50,7 @@ class IssueController extends Controller
      */
     public function show(Issue $issue)
     {
-        //
+        return view("pages.issues.show",compact("issue")) ;
     }
 
     /**
@@ -81,6 +84,9 @@ class IssueController extends Controller
      */
     public function destroy(Issue $issue)
     {
-        //
+        $issue->delete();
+        
+        return redirect()->route("issues.index")->with("success","Issues deleted") ;
+
     }
 }
