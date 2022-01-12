@@ -18,4 +18,10 @@ class Chama extends Model
     {
         return $this->belongsToMany(User::class, 'chama_user')->withPivot(['approved','received','receive_date'])->withTimestamps();
     }
+
+    public function latestReceiverOfDisbursement()
+    {
+        # code...
+        return $this->hasOne(User::class)->ofMany("receive_date","MAX");
+    }
 }

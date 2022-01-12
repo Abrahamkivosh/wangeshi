@@ -122,5 +122,16 @@ class ChamaController extends Controller
 
     }
 
+    public function disbursementChamaAmount()
+    {
+        # Members will receive disbursement of their respective chama amount  randomly
+        $chamas = Chama::latest()->get();
+
+        
+
+    }
+
+
+
 
 }
