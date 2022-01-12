@@ -65,7 +65,7 @@ class PaymentController extends Controller
             $user->deposit($amount);
         //    return $this->loadWallet($data,$mpesaGateway,$user);
         }
-       
+       return back()->with("success","Transaction completed successfully") ;
     }
 
     public function loadWallet( $data, MpesaGateway $mpesaGateway, User $user)
