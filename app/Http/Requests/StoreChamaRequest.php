@@ -13,7 +13,7 @@ class StoreChamaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return auth()->user()->role == 1;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreChamaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>"required|string|min:3",
+            'amount'=>"required|numeric",
+            'duration'=>"required|numeric",
+            'location'=>"required|string|min:3",
+            'description'=>"required|string|min:3",
+            
         ];
     }
 }

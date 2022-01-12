@@ -31,6 +31,7 @@ class CreatePaymentsTable extends Migration
             $table->float('amount')->nullable();
             $table->float('balance')->nullable();
             $table->boolean('active')->default(true);
+            $table->string('type')->nullable(); // 0 => deposit 1=> withdraw
             $table->dateTime('transactionDate')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

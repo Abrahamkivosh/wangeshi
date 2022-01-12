@@ -20,7 +20,7 @@
             </div>
 
             <div>
-                <x-jet-label for="middle_name" value="{{ __('Name') }}" />
+                <x-jet-label for="middle_name" value="{{ __('Midle Name') }}" />
                 <x-jet-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autofocus autocomplete="middle_name" />
             </div>
 

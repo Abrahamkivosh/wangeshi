@@ -15,7 +15,8 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        $meetings = Meeting::latest()->get();
+        return view('pages.meetings.index',compact('meetings')) ;
     }
 
     /**
@@ -36,7 +37,8 @@ class MeetingController extends Controller
      */
     public function store(StoreMeetingRequest $request)
     {
-        //
+        Meeting::create($request->validated()) ;
+        return back()->with('success','meeting created') ;
     }
 
     /**
@@ -81,6 +83,8 @@ class MeetingController extends Controller
      */
     public function destroy(Meeting $meeting)
     {
-        //
+        $meeting->delete() ;
+        return back()->with('success','meeting deleted') ;
+
     }
 }

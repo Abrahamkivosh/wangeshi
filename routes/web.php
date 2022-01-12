@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ChamaController;
+use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +27,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function ()
 {
     Route::resource('chamas',ChamaController::class) ;
+    Route::resource('meetings',MeetingController::class) ;
+    Route::resource('payments',PaymentController::class) ;
+    Route::post('join-chama/{chama}',[ChamaController::class,'joinChama'])->name("join.chama") ;
+    Route::post('leave-chama/{chama}',[ChamaController::class,'leaveChama'])->name("leave.chama") ;
+    Route::post('approve-chama-member/{chama}',[ChamaController::class,'approveChamaMember'])->name("approve.chama.member") ;
+
     
 });

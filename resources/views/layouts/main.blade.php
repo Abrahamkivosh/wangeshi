@@ -38,6 +38,7 @@
 </head>
 
 <body class="skin-default-dark fixed-layout">
+    @include('includes.messages')
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -62,6 +63,7 @@
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
        @include('includes.sidebar')
+      
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->

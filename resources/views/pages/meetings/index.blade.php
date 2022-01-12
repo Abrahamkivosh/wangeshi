@@ -10,13 +10,13 @@
         <!-- ============================================================== -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Chamas</h4>
+                <h4 class="text-themecolor">meetings</h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Chamas</li>
+                        <li class="breadcrumb-item active">meetings</li>
                     </ol>
                     <button type="button" class="btn btn-info d-none d-lg-block m-l-15"  data-toggle="modal" data-target="#modalcreate"><i class="fa fa-plus-circle"></i> Create New</button>
                     <!-- Button trigger modal -->
@@ -27,35 +27,36 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Create new chama</h5>
+                                    <h5 class="modal-title">Create new meeting</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                 </div>
-                                <form action="{{ route('chamas.store') }}" method="post">
+                                <form action="{{ route('meetings.store') }}" method="post">
                                     @csrf
                                 <div class="modal-body row">
                                     
-                                        <div class="form-group col-6 ">
-                                          <label for="name">Chama Name</label>
-                                          <input type="text" name="name" id="name" class="form-control" placeholder="Chama name">
+                                        <div class="form-group col-12 ">
+                                          <label for="name">Meeting Name</label>
+                                          <input type="text" name="name" id="name" class="form-control" placeholder="meeting name">
                                         </div>
-                                        <div class="form-group col-6">
-                                            <label for="amount">Chama Amount</label>
-                                            <input type="number" name="amount" id="amount" class="form-control" placeholder="Chama amount">
+
+                                        <div class="form-group col-12 ">
+                                            <label for="theme">Meeting Theme</label>
+                                            <input type="text" name="theme" id="theme" class="form-control" placeholder="meeting theme">
                                           </div>
+                                      
+                                       
                                           <div class="form-group col-6">
-                                            <label for="duration">Chama duration months </label>
-                                            <input type="number" name="duration" id="duration" class="form-control" placeholder="Chama duration">
-                                          </div>
-                                          <div class="form-group col-6">
-                                            <label for="location">Chama location</label>
+                                            <label for="location">Meeting location</label>
                                             <input type="text" name="location" id="location" class="form-control" placeholder="Chama location">
                                           </div>
-                                          <div class="form-group col-12">
-                                            <label for="description">description</label>
-                                            <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                                          <div class="form-group col-6 ">
+                                            <label for="date">Meeting Date</label>
+                                            <input type="datetime-local" name="date" id="date" class="form-control" placeholder="meeting date">
+                                           
                                           </div>
+                                         
                                           
                                    
                                 </div>
@@ -80,8 +81,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">All Chama</h4>
-                        <h6 class="card-subtitle">Chamas available</h6>
+                        <h4 class="card-title">All Meetings</h4>
+                        <h6 class="card-subtitle">Meetings available</h6>
                      
                         <div class="table-responsive">
                             <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
@@ -89,22 +90,26 @@
                                     <tr>
                                         <th>ID #</th>
                                         <th>Name</th>
-                                        <th>Amount</th>
-                                        <th>Members</th>
-                                        <th>location</th>
+                                        <th>Theme</th>
+                                        <th>Location</th>
+                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($chamas as $key => $chama)
+                                    @foreach ($meetings as $key => $meeting)
                                     <tr>
                                         <td> {{ ++$key }} </td>
-                                        <td> {{ $chama->name}} </td>
-                                        <td> {{ $chama->amount}} </td>
-                                        <td> {{$chama->users_count}} </td>
-                                        <td> {{ $chama->location}} </td>
+                                        <td> {{ $meeting->name}} </td>
+                                        <td> {{ $meeting->theme}} </td>
+                                        <td> {{$meeting->location}} </td>
+                                        <td> {{ $meeting->date}} </td>
                                         <td>
-                                            <a href=" {{ route('chamas.show', $chama)}} " class=" btn btn-info " > View </a>
+                                            <form action="{{ route('meetings.destroy', $meeting)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                         </td>
 
                                     </tr>
