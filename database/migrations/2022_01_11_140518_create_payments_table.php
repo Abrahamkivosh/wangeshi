@@ -34,7 +34,7 @@ class CreatePaymentsTable extends Migration
             $table->string('type')->nullable(); // 0 => deposit 1=> withdraw
             $table->dateTime('transactionDate')->nullable();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

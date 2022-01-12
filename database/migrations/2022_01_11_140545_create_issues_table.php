@@ -17,7 +17,7 @@ class CreateIssuesTable extends Migration
             $table->id();
             $table->integer("user_id")->nullable();
             $table->longText('description') ;
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
