@@ -10,7 +10,7 @@
         <!-- ============================================================== -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Payments</h4>
+                <h4 class="text-themecolor">Payments  : <span> Balance {{ Auth::user()->balance }} KSH </span> </h4>
             </div>
             <div class="col-md-7 align-self-center text-right">
                 <div class="d-flex justify-content-end align-items-center">
@@ -75,8 +75,8 @@
                                 <div class="modal-body row">
                                     
                                         <div class="form-group col-12 ">
-                                          <label for="name">Deposit Amount</label>
-                                          <input type="text" name="amount" id="amount" class="form-control" placeholder="deposit amount">
+                                          <label for="name">Withdraw Amount</label>
+                                          <input type="text" name="amount" id="amount" class="form-control" placeholder="Withdraw amount">
                                         </div>
                                         <input type="hidden" name="type" value="1">
 
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Deposit</button>
+                                    <button type="submit" class="btn btn-primary">Withdraw</button>
                                 </div>
                             </form>
                             </div>
@@ -108,41 +108,28 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">All Meetings</h4>
-                        <h6 class="card-subtitle">Meetings available</h6>
+                        <h4 class="card-title">All Wallet Transactions</h4>
+                        <h6 class="card-subtitle">Transaction available</h6>
                      
                         <div class="table-responsive">
                             <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
                                 <thead>
                                     <tr>
-                                        <th>ID #</th>
-                                        <th>Name</th>
-                                        <th>Theme</th>
-                                        <th>Location</th>
+                                        <th>Type</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
                                         <th>Date</th>
-                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($meetings as $key => $meeting)
+                                    @foreach (Auth::user() ->transactions ->reverse()  as $trans)
                                     <tr>
-                                        <td> {{ ++$key }} </td>
-                                        <td> {{ $meeting->name}} </td>
-                                        <td> {{ $meeting->theme}} </td>
-                                        <td> {{$meeting->location}} </td>
-                                        <td> {{ $meeting->date}} </td>
-                                        <td>
-                                            <form action="{{ route('meetings.destroy', $meeting)}}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                        </td>
-
+                                        <td>{{ $trans -> type }}</td>
+                                        <td>{{ $trans -> amount }}</td>
+                                        <td>{{ $trans -> confirmed ? "Paid" : "Unpaid" }}</td>
+                                        <td>{{ $trans -> created_at }}</td>
                                     </tr>
-                                        
-                                    @endforeach
-                                   
+                                @endforeach
                                 </tbody>
                                 <tfoot>
                                     
