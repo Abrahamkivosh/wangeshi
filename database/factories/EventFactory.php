@@ -14,7 +14,9 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            //
+
+            'title'=>$this->faker->unique()->word,
+            'description'=>$this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
         ];
     }
 }
