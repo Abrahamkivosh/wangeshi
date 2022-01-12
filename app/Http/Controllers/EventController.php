@@ -8,6 +8,12 @@ use App\Http\Requests\UpdateEventRequest;
 
 class EventController extends Controller
 {
+
+
+//     public function authorize()
+// {
+//     return true;
+// }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+        return view('pages.events.index',compact('events'));
     }
 
     /**
@@ -25,7 +32,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.events.create');
     }
 
     /**
@@ -36,7 +43,26 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        //
+        $this->validate($request,[
+
+            'title'=>'required',
+            'description'=>'required'
+
+        ]);
+
+        $post = new Event();
+
+        $post->title=$request->title;
+        $Post->description=$request->description;
+
+        $validate=$post->save();
+
+        if($validate){
+            return back()->with('success','You have successfully created a new event.');
+        }
+        else{
+            return back()->with('error','An error occured, please try again or contact the admin.');
+        }
     }
 
     /**
@@ -45,9 +71,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(Event $event,$id)
     {
-        //
+        $event = Event::find($id);
+        return view('pages.events.show',compact('event'));
     }
 
     /**
@@ -56,9 +83,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(Event $event,$id)
     {
-        //
+        $event = Event::find($id);
+        return view('pages.events.edit',compact('event'));
     }
 
     /**
@@ -68,9 +96,28 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(UpdateEventRequest $request, Event $event,$id)
     {
-        //
+        $this->validate($request,[
+
+            'title'=>'required',
+            'description'=>'required'
+
+        ]);
+
+        $post = Event::find($id);
+
+        $post->title=$request->title;
+        $Post->description=$request->description;
+
+        $validate=$post->save();
+
+        if($validate){
+            return back()->with('success','You have successfully created a new event.');
+        }
+        else{
+            return back()->with('error','An error occured, please try again or contact the admin.');
+        }
     }
 
     /**
@@ -79,8 +126,17 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event,$id)
     {
-        //
+        $delete = Event::find($id);
+        $delete->delete();
+
+        if($delete){
+            return back()->with('success','You have successfully deleted this event.');
+
+        }else{
+            return back()->with('error','An error occured while deleting the event, please try again or contact the admin.');
+        }
+
     }
 }

@@ -8,7 +8,7 @@
                 <div class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown"
                         role="button" aria-haspopup="true" aria-expanded="false">
-                        {{auth()->user()->first_name . " ". auth()->user()->last_name}}
+                        {{-- {{auth()->user()->first_name . " ". auth()->user()->last_name}} --}}
                          <span class="caret"></span></a>
                     <div class="dropdown-menu animated flipInY">
                         <!-- text-->
@@ -66,8 +66,8 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                             class="ti-star"></i><span class="hide-menu">Events</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li> <a href="crm-leads.html">All Events</a></li>
-                        <li> <a href="crm-add-leads.html">Add Event</a></li>
+                        <li> <a href="{{route('event.index')}}">All Events</a></li>
+                        <li> <a href="{{route('event.create')}}">Add Event</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
