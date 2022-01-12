@@ -41,7 +41,7 @@
                                 <button type="submit" class="btn btn-info">Join Chama</button>
                             </form>
 
-                            <form action="{{route('disbursementChamaAmount',$chama)}}" class=" float-right  " method="post">
+                            <form action="{{route('disbursementChamaAmount',$chama)}}" class=" float-right pr-2  " method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Disbursement Money</button>
                             </form>
@@ -136,11 +136,14 @@
                                                 <input type="hidden" name="user_id" value="{{$user->id}}">
                                                 <button type="submit" class="btn btn-primary">Remove</button>
                                             </form>
+                                            @if  (!$user->pivot->approved)
                                             <form action="{{ route('approve.chama.member',$chama) }}" method="POST" >
                                                 @csrf
                                                 <input type="hidden" name="user_id" value="{{$user->id}}">
                                                 <button type="submit" class="btn btn-info"> <i class="mid mid-f621" ></i> Approve</button>
                                             </form>
+                                            @endif
+                                         
                                         </td>
                                     </tr>
                                         
